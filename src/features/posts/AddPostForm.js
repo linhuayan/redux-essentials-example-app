@@ -17,14 +17,14 @@ export const AddPostForm = () => {
     const onAuthorChanged = e => setUserId(e.target.value)
 
     const onSavePostClicked = () => {
-        if (title && content) {
+        if (title && content && userId) {
             dispatch(
                 // postAdded({
                 //     id: nanoid(),
                 //     title,
                 //     content
                 // })
-                postAdded(title, content)
+                postAdded(title, content, userId)
             )
             setTitle('')
             setContent('')

@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { PostAuthor } from './PostAuthor';
+import { TimeAgo } from './TimeAgo';
+import { ReactionButtons } from './ReactionButtons';
 
 export const SinglePostPage = (props) => {
     console.log('props', props);
@@ -22,14 +24,18 @@ export const SinglePostPage = (props) => {
     }
 
     return (
-        <section>111
+        <section>
             <article className='post'>
                 <h2>{post.title}</h2>
+                <div>
+                    <PostAuthor userId={post.user} />
+                    <TimeAgo timestamp={post.date} />
+                </div>
                 <p className='post-content'>{post.content}</p>
+                <ReactionButtons post={post} />
                 <Link to={`/editPost/${post.id}`} className="button">
                     Edit Post
                 </Link>
-                <PostAuthor userId={post.user} />
             </article>
         </section>
     )
