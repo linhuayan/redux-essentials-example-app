@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { PostAuthor } from './PostAuthor';
 import { TimeAgo } from './TimeAgo';
 import { ReactionButtons } from './ReactionButtons';
+import { selectAllPosts } from './postsSlice';
 
 export const PostsList = () => {
-    const posts = useSelector(state => state.posts);
+    const posts = useSelector(selectAllPosts);
     // 根据日期时间对文章进行倒序排序
     const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
 
