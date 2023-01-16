@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Navbar />
       <div className="App">
-        <Switch>
+        {/* <Switch>
           <Route
             exact
             path="/"
@@ -28,9 +28,10 @@ function App() {
               </React.Fragment>
             )}
           />
-          <Route exact path='posts/:postId' component={SinglePostPage} />
+          <Route exact path="posts/:postId" component={SinglePostPage} />
           <Redirect to="/" />
-        </Switch>
+        </Switch> */}
+        <Route exact path="posts/:postId" component={SinglePostPage} />
       </div>
     </Router>
   )
