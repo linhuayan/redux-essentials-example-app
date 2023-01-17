@@ -1,16 +1,25 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { PostAuthor } from './PostAuthor';
 import { TimeAgo } from './TimeAgo';
 import { ReactionButtons } from './ReactionButtons';
-import { selectAllPosts } from './postsSlice';
+import { selectAllPosts, fetchPosts } from './postsSlice';
 
 export const PostsList = () => {
+    const dispatch = useDispatch()
     const posts = useSelector(selectAllPosts);
+
+    const postStatus = useSelector(state => state.posts.status)
+
+    useEffect(() => {
+        if (postStatus === 'idle') {
+            dispatch(fetchPosts())
+        }
+    }, [postStatus, dispatch])
+
     // 根据日期时间对文章进行倒序排序
     const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
-
     const renderedPosts = orderedPosts.map(post => (
         <article className='post-excerpt' key={post.id}>
             <h3>{post.title}</h3>
