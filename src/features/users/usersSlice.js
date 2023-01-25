@@ -18,6 +18,7 @@ const usersSlice = createSlice({
     reducers: {},
     extraReducers(builder) {
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
+            // 不能这样改，猜想是因为对象的keys的length为1。
             return action.payload
         })
     }
