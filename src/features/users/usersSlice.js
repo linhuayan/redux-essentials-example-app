@@ -18,7 +18,9 @@ const usersSlice = createSlice({
     reducers: {},
     extraReducers(builder) {
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
-            return action.payload
+            console.log('用户数据',state, action.payload)
+            state.users = action.payload
+            console.log('state.users', state.users)
         })
     }
 })
