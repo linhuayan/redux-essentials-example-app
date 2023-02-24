@@ -15,6 +15,8 @@ import { EditPostForm } from './features/posts/EditPostForm'
 import { UsersList } from './features/users/UserLists'
 import { UserPage } from './features/users/UserPage'
 import { NotificationsList } from './features/notifications/NotificationsList'
+import { TdesignTest } from './features/tdesignTest'
+import { ReactWindowTest } from './features/reactWindowTest'
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           <Route exact path='/users' component={UsersList} />
           <Route exact path="/users/:userId" component={UserPage} />
           <Route exact path="/notifications" component={NotificationsList} />
+          <Route exact path="/tdesignTest" component={TdesignTest} />
+          <Route exact path="/reactWindowTest" component={ReactWindowTest} />
           <Redirect to="/" />
         </Switch>
       </div>
